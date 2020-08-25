@@ -8,7 +8,7 @@ namespace IncomeTaxCal
         {
             var incomeTax = new IncomeTaxCalFinder
             {
-                State = "AK",
+                State = "AL",
                 Income = 45000
             };
             incomeTax.taxableIncome();

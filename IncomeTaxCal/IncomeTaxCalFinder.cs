@@ -39,16 +39,11 @@ namespace IncomeTaxCal
             return TaxPercentage;
         }
 
-        public void taxableIncome()
+        public double taxableIncome()
         {
             TaxPercentage = getStateIncomeTax();
-            double newIncome = Income - (TaxPercentage * Income);
-            printMessage(newIncome);
-        }
-
-        public void printMessage(double newIncome)
-        {
-            Console.WriteLine($"Your new taxable income is {newIncome}");
+            double newIncome = Income - (TaxPercentage*Income);
+            return newIncome;
         }
     }
 }

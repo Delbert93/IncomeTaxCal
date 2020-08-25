@@ -22,5 +22,17 @@ namespace IncomeTaxCalTests
             double actual = incomeTax.getStateIncomeTax();
             Assert.AreEqual(expected, actual);
         }
+        [Test]
+        public void TestTaxableIncome()
+        {
+            var incomeTax = new IncomeTaxCalFinder
+            {
+                State = "AL",
+                Income = 45000
+            };
+            double expected = 43200;
+            double actual = incomeTax.taxableIncome();
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
