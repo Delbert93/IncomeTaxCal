@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
+using System.Net.Http;
 using System.Text;
 
 namespace IncomeTaxCal
@@ -10,7 +11,11 @@ namespace IncomeTaxCal
     {
         public string State { get; set; }
         public double TaxPercentage { get; set; }
-        public int Income { get; set; }
+        public double Income { get; set; }
+
+        public string[] listOfStates = { "AL", "AK", "AZ", "AR"};
+
+        public double[] stateTax = {0.04, 0.0621, 0.0334, 0.06};
 
         public IncomeTaxCalFinder()
         {}
@@ -24,8 +29,6 @@ namespace IncomeTaxCal
 
         public double getStateIncomeTax()
         {
-            string[] listOfStates = { "AL", "AK", "AZ", "AR" };
-            double[] stateTax = { 0.04, 0.0621, 0.0334, 0.06 };
             int count = 0;
             foreach (string s in listOfStates)
             {
@@ -39,11 +42,21 @@ namespace IncomeTaxCal
             return TaxPercentage;
         }
 
+        // READ!!!!!!!! I know the way i am checking for the income and lists is not great but i was not sure how to catch an error in a test if the income was 
+        // bad. If you could leave a comment on a better way that would be great! If you dont ill schedule time
+        // with you on it
+
         public double taxableIncome()
         {
+            if (Income < 0)
+            {
+                return 0;
+            }
             TaxPercentage = getStateIncomeTax();
-            double newIncome = Income - (TaxPercentage*Income);
-            return newIncome;
+            Income = Income - (TaxPercentage*Income);
+            return Income;
+           
         }
+
     }
 }

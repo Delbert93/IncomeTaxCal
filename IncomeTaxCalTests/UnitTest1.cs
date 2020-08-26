@@ -11,7 +11,7 @@ namespace IncomeTaxCalTests
         }
 
         [Test]
-        public void TestTaxPercent()
+        public void TestGetStateIncomeTax()
         {
             var incomeTax = new IncomeTaxCalFinder
             {
@@ -33,6 +33,18 @@ namespace IncomeTaxCalTests
             double expected = 43200;
             double actual = incomeTax.taxableIncome();
             Assert.AreEqual(expected, actual);
+
+            // If income is less then zero then this method will return zero
+            var badIncomeTax = new IncomeTaxCalFinder
+            {
+                State = "AL",
+                Income = -45000
+            };
+
+            double badExpected = 0;
+            double badActual = badIncomeTax.taxableIncome();
+            Assert.AreEqual(badExpected, badActual);
+
         }
     }
 }
