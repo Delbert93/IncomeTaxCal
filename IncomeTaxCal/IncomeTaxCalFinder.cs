@@ -11,12 +11,23 @@ namespace IncomeTaxCal
     {
         public string State { get; set; }
         public decimal TaxPercentage { get; private set; }
-        public decimal Income { get; set; }
+        public decimal Income 
+        { 
+            get => income; 
+            set 
+            { 
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(Income), value, "Income can not be less then zero");
+                }
+                income = value; 
+            } 
+        }
         // TODO add the rest of the states and statetax
         public IEnumerable<string> ListOfStates => taxRates.Keys;
 
         private Dictionary<string, decimal> taxRates;
-
+        private decimal income;
 
         public IncomeTaxCalFinder()
         {
@@ -45,14 +56,10 @@ namespace IncomeTaxCal
 
         public decimal taxableIncome()
         {
-            if (Income < 0)
-            {
-                return 0;
-            }
             TaxPercentage = getStateIncomeTax();
-            Income = Income - (TaxPercentage*Income);
+            Income = Income - (TaxPercentage * Income);
             return Income;
-           
+
         }
 
     }

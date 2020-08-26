@@ -12,6 +12,7 @@ namespace IncomeTaxCal.WinForms
 {
     public partial class Form1 : Form
     {
+        IncomeTaxCalFinder calc = new IncomeTaxCalFinder();
         public Form1()
         {
             InitializeComponent();
@@ -19,10 +20,20 @@ namespace IncomeTaxCal.WinForms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var calc = new IncomeTaxCalFinder();
-            calc.Income = double.Parse(txtIncomeBox.Text);
+            
+            calc.Income = decimal.Parse(txtIncomeBox.Text);
+            //if(calc.Income < 0)
+            //{
+
+            //}
+            calc.State = combState.Text;
             txtNewIncome.Text = calc.taxableIncome().ToString("c");
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            combState.Items.Clear();
+            combState.Items.AddRange(calc.ListOfStates.ToArray());
+        }
     }
 }

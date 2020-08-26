@@ -1,5 +1,6 @@
 using IncomeTaxCal;
 using NUnit.Framework;
+using System;
 
 namespace IncomeTaxCalTests
 {
@@ -35,16 +36,30 @@ namespace IncomeTaxCalTests
             Assert.AreEqual(expected, actual);
 
             // If income is less then zero then this method will return zero
-            var badIncomeTax = new IncomeTaxCalFinder
+            try
             {
-                State = "AL",
-                Income = -45000
-            };
+                var badIncomeTax = new IncomeTaxCalFinder
+                {
+                    State = "AL",
+                    Income = -45000
+                };
+                Assert.Fail("Negative income should throw an exception.");
 
-            decimal badExpected = 0;
-            decimal badActual = badIncomeTax.taxableIncome();
-            Assert.AreEqual(badExpected, badActual);
+            }
+            catch(ArgumentOutOfRangeException ar)
+            {
+                Assert.Pass("Negative income throws an exception.");
+            }
+            
 
         }
+
+        [Test]
+        public void InvalidState()
+        {
+
+        }
+
+        // Test on making sure the dictonary input is correct. As in the Just two letters or no more then 50 where would be IncomeTaxCalFinder
     }
 }
