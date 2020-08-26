@@ -12,7 +12,7 @@ namespace IncomeTaxCal
         public string State { get; set; }
         public double TaxPercentage { get; set; }
         public double Income { get; set; }
-
+        // TODO add the rest of the states and statetax
         public string[] listOfStates = { "AL", "AK", "AZ", "AR"};
 
         public double[] stateTax = {0.04, 0.0621, 0.0334, 0.06};
