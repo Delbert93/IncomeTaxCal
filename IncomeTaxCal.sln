@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IncomeTaxCal", "IncomeTaxCal\IncomeTaxCal.csproj", "{37C22A81-3E0C-43AC-B57F-E299004B48AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IncomeTaxCal", "IncomeTaxCal\IncomeTaxCal.csproj", "{37C22A81-3E0C-43AC-B57F-E299004B48AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IncomeTaxCalTests", "IncomeTaxCalTests\IncomeTaxCalTests.csproj", "{A8B256C0-F81B-48A5-A8A6-41533EB101EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IncomeTaxCalTests", "IncomeTaxCalTests\IncomeTaxCalTests.csproj", "{A8B256C0-F81B-48A5-A8A6-41533EB101EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IncomeTaxCal.WinForms", "IncomeTaxCal.WinForms\IncomeTaxCal.WinForms.csproj", "{4ECC2DE8-F4B1-462A-B888-00130802DAF0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{A8B256C0-F81B-48A5-A8A6-41533EB101EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8B256C0-F81B-48A5-A8A6-41533EB101EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8B256C0-F81B-48A5-A8A6-41533EB101EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4ECC2DE8-F4B1-462A-B888-00130802DAF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4ECC2DE8-F4B1-462A-B888-00130802DAF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4ECC2DE8-F4B1-462A-B888-00130802DAF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4ECC2DE8-F4B1-462A-B888-00130802DAF0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
