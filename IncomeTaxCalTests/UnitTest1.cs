@@ -18,8 +18,8 @@ namespace IncomeTaxCalTests
                 State = "AL",
                 Income = 45000
             };
-            double expected = 0.04;
-            double actual = incomeTax.getStateIncomeTax();
+            decimal expected = 0.04M;
+            decimal actual = incomeTax.getStateIncomeTax();
             Assert.AreEqual(expected, actual);
         }
         [Test]
@@ -30,8 +30,8 @@ namespace IncomeTaxCalTests
                 State = "AL",
                 Income = 45000
             };
-            double expected = 43200;
-            double actual = incomeTax.taxableIncome();
+            decimal expected = 43200;
+            decimal actual = incomeTax.taxableIncome();
             Assert.AreEqual(expected, actual);
 
             // If income is less then zero then this method will return zero
@@ -41,8 +41,8 @@ namespace IncomeTaxCalTests
                 Income = -45000
             };
 
-            double badExpected = 0;
-            double badActual = badIncomeTax.taxableIncome();
+            decimal badExpected = 0;
+            decimal badActual = badIncomeTax.taxableIncome();
             Assert.AreEqual(badExpected, badActual);
 
         }

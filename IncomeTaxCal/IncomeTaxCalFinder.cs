@@ -10,43 +10,40 @@ namespace IncomeTaxCal
     public class IncomeTaxCalFinder
     {
         public string State { get; set; }
-        public double TaxPercentage { get; set; }
-        public double Income { get; set; }
+        public decimal TaxPercentage { get; private set; }
+        public decimal Income { get; set; }
         // TODO add the rest of the states and statetax
-        public string[] listOfStates = { "AL", "AK", "AZ", "AR"};
+        public IEnumerable<string> ListOfStates => taxRates.Keys;
 
-        public double[] stateTax = {0.04, 0.0621, 0.0334, 0.06};
+        private Dictionary<string, decimal> taxRates;
+
 
         public IncomeTaxCalFinder()
-        {}
+        {
+            taxRates = new Dictionary<string, decimal>();
+            taxRates.Add("AL", .04M);
+            taxRates.Add("AK", .0621M);
+            taxRates.Add("AZ", .0334M);
+            taxRates.Add("AR", .06M);
+        }
 
-        public IncomeTaxCalFinder(string state, double taxPercentage, int income)
+        public IncomeTaxCalFinder(string state, decimal taxPercentage, decimal income) : base()
         {
             State = state;
             TaxPercentage = taxPercentage;
             Income = income;
         }
 
-        public double getStateIncomeTax()
+        public decimal getStateIncomeTax()
         {
-            int count = 0;
-            foreach (string s in listOfStates)
-            {
-                if (s == State)
-                {
-                    TaxPercentage = stateTax[count];
-                    break;
-                }
-                count++;
-            }
-            return TaxPercentage;
+            return TaxPercentage = taxRates[State];
         }
 
         // READ!!!!!!!! I know the way i am checking for the income and lists is not great but i was not sure how to catch an error in a test if the income was 
         // bad. If you could leave a comment on a better way that would be great! If you dont ill schedule time
         // with you on it
 
-        public double taxableIncome()
+        public decimal taxableIncome()
         {
             if (Income < 0)
             {
