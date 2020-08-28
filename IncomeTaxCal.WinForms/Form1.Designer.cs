@@ -1,6 +1,6 @@
 ﻿namespace IncomeTaxCal.WinForms
 {
-    partial class Form1
+    partial class Income_Calculator
     {
         /// <summary>
         ///  Required designer variable.
@@ -58,12 +58,13 @@
             this.tabSystem.Location = new System.Drawing.Point(0, 0);
             this.tabSystem.Name = "tabSystem";
             this.tabSystem.SelectedIndex = 0;
-            this.tabSystem.Size = new System.Drawing.Size(831, 493);
+            this.tabSystem.Size = new System.Drawing.Size(355, 317);
             this.tabSystem.TabIndex = 6;
             this.tabSystem.SelectedIndexChanged += new System.EventHandler(this.tabSwitching_SelectedIndexChanged);
             // 
             // tabPage1
             // 
+            this.tabPage1.BackColor = System.Drawing.Color.Transparent;
             this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.txtNewIncome);
             this.tabPage1.Controls.Add(this.combState);
@@ -74,20 +75,19 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(823, 465);
+            this.tabPage1.Size = new System.Drawing.Size(347, 289);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Income Calculator";
-            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(8, 139);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(111, 23);
-            this.button1.TabIndex = 0;
+            this.button1.TabIndex = 4;
             this.button1.Text = "Get New Income";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.getNewIncome_Click);
             // 
             // txtNewIncome
             // 
@@ -95,7 +95,7 @@
             this.txtNewIncome.Name = "txtNewIncome";
             this.txtNewIncome.ReadOnly = true;
             this.txtNewIncome.Size = new System.Drawing.Size(185, 23);
-            this.txtNewIncome.TabIndex = 2;
+            this.txtNewIncome.TabIndex = 6;
             // 
             // combState
             // 
@@ -114,7 +114,7 @@
             this.label3.Location = new System.Drawing.Point(8, 12);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(47, 15);
-            this.label3.TabIndex = 4;
+            this.label3.TabIndex = 0;
             this.label3.Text = "Income";
             // 
             // label2
@@ -123,7 +123,7 @@
             this.label2.Location = new System.Drawing.Point(8, 73);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(33, 15);
-            this.label2.TabIndex = 4;
+            this.label2.TabIndex = 2;
             this.label2.Text = "State";
             // 
             // label1
@@ -132,7 +132,7 @@
             this.label1.Location = new System.Drawing.Point(8, 199);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(74, 15);
-            this.label1.TabIndex = 4;
+            this.label1.TabIndex = 5;
             this.label1.Text = "New Income";
             // 
             // txtIncomeBox
@@ -140,7 +140,7 @@
             this.txtIncomeBox.Location = new System.Drawing.Point(72, 12);
             this.txtIncomeBox.Name = "txtIncomeBox";
             this.txtIncomeBox.Size = new System.Drawing.Size(121, 23);
-            this.txtIncomeBox.TabIndex = 5;
+            this.txtIncomeBox.TabIndex = 1;
             this.txtIncomeBox.Text = "0";
             this.txtIncomeBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -150,7 +150,7 @@
             this.historyTab.Location = new System.Drawing.Point(4, 24);
             this.historyTab.Name = "historyTab";
             this.historyTab.Padding = new System.Windows.Forms.Padding(3);
-            this.historyTab.Size = new System.Drawing.Size(823, 465);
+            this.historyTab.Size = new System.Drawing.Size(347, 289);
             this.historyTab.TabIndex = 1;
             this.historyTab.Text = "Calculation History";
             this.historyTab.UseVisualStyleBackColor = true;
@@ -165,7 +165,7 @@
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(3, 3);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(817, 459);
+            this.dataGridView1.Size = new System.Drawing.Size(341, 283);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.Text = "dataGridView1";
             // 
@@ -187,15 +187,16 @@
             this.NewIncomeHistory.Name = "NewIncomeHistory";
             this.NewIncomeHistory.ReadOnly = true;
             // 
-            // Form1
+            // Income_Calculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(832, 491);
+            this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
+            this.ClientSize = new System.Drawing.Size(356, 315);
             this.Controls.Add(this.tabSystem);
-            this.Name = "Form1";
-            this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Name = "Income_Calculator";
+            this.Text = "Income Calculator";
+            this.Load += new System.EventHandler(this.Income_Calculator_Load);
             this.tabSystem.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();

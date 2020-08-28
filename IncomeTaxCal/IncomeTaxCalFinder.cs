@@ -16,10 +16,10 @@ namespace IncomeTaxCal
             get => income; 
             set 
             { 
-                //if (value < 0)
-                //{
-                //    throw new ArgumentOutOfRangeException(nameof(Income), value, "Income can not be less then zero");
-                //}
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(Income), value, "Income can not be less then zero");
+                }
                 income = value; 
             } 
         }

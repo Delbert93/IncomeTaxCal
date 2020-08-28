@@ -10,22 +10,20 @@ using System.Windows.Forms;
 
 namespace IncomeTaxCal.WinForms
 {
-    public partial class Form1 : Form
+    public partial class Income_Calculator : Form
     {
-        IncomeTaxCalFinder calc = new IncomeTaxCalFinder();
         List<IncomeTaxCalFinder> CalcHistory = new List<IncomeTaxCalFinder>();
         
-        public Form1()
+        public Income_Calculator()
         {
             InitializeComponent();
             
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void getNewIncome_Click(object sender, EventArgs e)
         {
             IncomeTaxCalFinder calc = new IncomeTaxCalFinder();
             calc.Income = decimal.Parse(txtIncomeBox.Text);
-            if(calc.Income < 0)
+            if (calc.Income < 0)
             {
                 MessageBox.Show("Income can not be less then zero.");
                 Application.Exit();
@@ -36,7 +34,7 @@ namespace IncomeTaxCal.WinForms
             CalcHistory.Add(calc);
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Income_Calculator_Load(object sender, EventArgs e)
         {
             IncomeTaxCalFinder calc = new IncomeTaxCalFinder();
             combState.Items.Clear();
