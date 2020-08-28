@@ -23,6 +23,8 @@ namespace IncomeTaxCal
                 income = value; 
             } 
         }
+
+        public decimal NewIncome { get; set; }
         // TODO add the rest of the states and statetax
         public IEnumerable<string> ListOfStates => taxRates.Keys;
 
@@ -57,8 +59,8 @@ namespace IncomeTaxCal
         public decimal taxableIncome()
         {
             TaxPercentage = getStateIncomeTax();
-            Income = Income - (TaxPercentage * Income);
-            return Income;
+            NewIncome = Income - (TaxPercentage * Income);
+            return NewIncome;
 
         }
 
