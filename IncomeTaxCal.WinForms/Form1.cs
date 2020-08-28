@@ -25,10 +25,11 @@ namespace IncomeTaxCal.WinForms
         {
             IncomeTaxCalFinder calc = new IncomeTaxCalFinder();
             calc.Income = decimal.Parse(txtIncomeBox.Text);
-            //if(calc.Income < 0)
-            //{
-
-            //}
+            if(calc.Income < 0)
+            {
+                MessageBox.Show("Income can not be less then zero.");
+                Application.Exit();
+            }
             calc.State = combState.Text;
             txtNewIncome.Text = calc.taxableIncome().ToString("c");
             CalcHistory.Count();
