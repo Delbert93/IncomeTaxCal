@@ -60,7 +60,7 @@
             this.tabSystem.SelectedIndex = 0;
             this.tabSystem.Size = new System.Drawing.Size(831, 493);
             this.tabSystem.TabIndex = 6;
-            this.tabSystem.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+            this.tabSystem.SelectedIndexChanged += new System.EventHandler(this.tabSwitching_SelectedIndexChanged);
             // 
             // tabPage1
             // 
@@ -168,7 +168,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(817, 459);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.Text = "dataGridView1";
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // IncomeHistory
             // 

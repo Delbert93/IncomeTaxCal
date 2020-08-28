@@ -43,13 +43,7 @@ namespace IncomeTaxCal.WinForms
             combState.Items.AddRange(calc.ListOfStates.ToArray());
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-
-        }
-
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        private void tabSwitching_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (tabSystem.SelectedTab == historyTab)
             {
