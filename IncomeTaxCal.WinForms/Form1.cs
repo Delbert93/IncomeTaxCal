@@ -23,12 +23,17 @@ namespace IncomeTaxCal.WinForms
         {
             IncomeTaxCalFinder calc = new IncomeTaxCalFinder();
             calc.Income = decimal.Parse(txtIncomeBox.Text);
-            if (calc.Income < 0)
+            if (calc.Income <= 0)
             {
-                MessageBox.Show("Income can not be less then zero.");
-                Application.Exit();
+                MessageBox.Show("Income must be greater then zero.");
+                return;
             }
             calc.State = combState.Text;
+            if (combState.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select a state");
+                return;
+            }
             txtNewIncome.Text = calc.taxableIncome().ToString("c");
             CalcHistory.Count();
             CalcHistory.Add(calc);
@@ -50,6 +55,19 @@ namespace IncomeTaxCal.WinForms
                 {
                     dataGridView1.Rows.Add(c.Income, c.State, c.NewIncome);
                 }
+            }
+        }
+
+        private void txtIncomeBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            if((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
             }
         }
     }

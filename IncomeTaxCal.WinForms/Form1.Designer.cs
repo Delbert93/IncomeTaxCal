@@ -30,13 +30,13 @@
         {
             this.tabSystem = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.txtIncomeBox = new System.Windows.Forms.NumericUpDown();
             this.button1 = new System.Windows.Forms.Button();
             this.txtNewIncome = new System.Windows.Forms.TextBox();
             this.combState = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtIncomeBox = new System.Windows.Forms.TextBox();
             this.historyTab = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.IncomeHistory = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,6 +44,7 @@
             this.NewIncomeHistory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabSystem.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtIncomeBox)).BeginInit();
             this.historyTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -65,19 +66,32 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.Transparent;
+            this.tabPage1.Controls.Add(this.txtIncomeBox);
             this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.txtNewIncome);
             this.tabPage1.Controls.Add(this.combState);
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Controls.Add(this.txtIncomeBox);
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(347, 289);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Income Calculator";
+            // 
+            // txtIncomeBox
+            // 
+            this.txtIncomeBox.Location = new System.Drawing.Point(73, 10);
+            this.txtIncomeBox.Maximum = new decimal(new int[] {
+            1410065408,
+            2,
+            0,
+            0});
+            this.txtIncomeBox.Name = "txtIncomeBox";
+            this.txtIncomeBox.Size = new System.Drawing.Size(120, 23);
+            this.txtIncomeBox.TabIndex = 1;
+            this.txtIncomeBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIncomeBox_KeyPress);
             // 
             // button1
             // 
@@ -135,15 +149,6 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "New Income";
             // 
-            // txtIncomeBox
-            // 
-            this.txtIncomeBox.Location = new System.Drawing.Point(72, 12);
-            this.txtIncomeBox.Name = "txtIncomeBox";
-            this.txtIncomeBox.Size = new System.Drawing.Size(121, 23);
-            this.txtIncomeBox.TabIndex = 1;
-            this.txtIncomeBox.Text = "0";
-            this.txtIncomeBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // historyTab
             // 
             this.historyTab.Controls.Add(this.dataGridView1);
@@ -200,6 +205,7 @@
             this.tabSystem.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtIncomeBox)).EndInit();
             this.historyTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -216,12 +222,12 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtIncomeBox;
         private System.Windows.Forms.TabPage historyTab;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn IncomeHistory;
         private System.Windows.Forms.DataGridViewTextBoxColumn StateHistory;
         private System.Windows.Forms.DataGridViewTextBoxColumn NewIncomeHistory;
+        private System.Windows.Forms.NumericUpDown txtIncomeBox;
     }
 }
 
