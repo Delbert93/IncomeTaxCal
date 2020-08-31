@@ -109,7 +109,8 @@
             this.txtNewIncome.Name = "txtNewIncome";
             this.txtNewIncome.ReadOnly = true;
             this.txtNewIncome.Size = new System.Drawing.Size(185, 23);
-            this.txtNewIncome.TabIndex = 6;
+            this.txtNewIncome.TabIndex = 0;
+            this.txtNewIncome.TabStop = false;
             // 
             // combState
             // 
