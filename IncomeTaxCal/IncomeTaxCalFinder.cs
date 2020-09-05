@@ -7,10 +7,12 @@ using System.Text;
 
 namespace IncomeTaxCal
 {
-    public class IncomeTaxCalFinder
+    public class IncomeTaxCalFinder : ICloneable
     {
         public string State { get; set; }
         public decimal TaxPercentage { get; private set; }
+
+        public decimal NewIncome { get; set; }
         public decimal Income 
         { 
             get => income; 
@@ -23,12 +25,10 @@ namespace IncomeTaxCal
                 income = value; 
             } 
         }
-
-        public decimal NewIncome { get; set; }
         // TODO add the rest of the states and statetax
         public IEnumerable<string> ListOfStates => taxRates.Keys;
 
-        private Dictionary<string, decimal> taxRates;
+        public Dictionary<string, decimal> taxRates;
         private decimal income;
 
         public IncomeTaxCalFinder()
@@ -62,6 +62,17 @@ namespace IncomeTaxCal
             NewIncome = Income - (TaxPercentage * Income);
             return NewIncome;
 
+        }
+
+        public object Clone()
+        {
+            return new IncomeTaxCalFinder
+            {
+                Income = Income,
+                TaxPercentage = TaxPercentage,
+                State = State,
+                NewIncome = NewIncome
+            };
         }
 
     }
