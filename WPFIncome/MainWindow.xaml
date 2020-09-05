@@ -72,7 +72,7 @@
                            VerticalAlignment="Center" />
                 <TextBox Grid.Row="5"  
                          Grid.Column="1"
-                         Text="{Binding IncomeCalculator.NewIncome}"/>
+                         Text="{Binding IncomeCalculator.NewIncome, StringFormat=c}"/>
 
                 <Button Content="Import"
                         Grid.Row="6"

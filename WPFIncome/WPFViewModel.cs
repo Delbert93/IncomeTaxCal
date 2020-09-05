@@ -14,9 +14,13 @@ namespace WPFIncome
 {
     public class WPFViewModel : BindableBase
     {
-        public WPFViewModel(RealFileProvider reaslFileProvider)
+        public WPFViewModel(RealFileProvider realFileProvider)
         {
             History = new ObservableCollection<IncomeTaxCalFinder>();
+
+            //realFileProvider = new RealFileProvider();
+
+            //this.fileProvider = fileProvider;
 
             IncomeCalculator = new IncomeTaxCalFinder();
             IncomeCalculator.Income = 75000;
@@ -24,7 +28,17 @@ namespace WPFIncome
             
             CalculateCommand = new DelegateCommand(() =>
             {
+                if (IncomeCalculator.Income < 0)
+                {
+                    MessageBox.Show("Income must be greater the zero.");
+                    return;
+                }
                 IncomeCalculator.State = SelectedState;
+                if(IncomeCalculator.State == null)
+                {
+                    MessageBox.Show("A state must be selected");
+                    return;
+                }
                 IncomeCalculator.taxableIncome();
                 History.Add(IncomeCalculator);
 
@@ -79,7 +93,7 @@ namespace WPFIncome
         //        {
         //            Parallel.ForEach(rows, r => r.taxableIncome());
         //        });
-        //        foreach(var r in rows)
+        //        foreach (var r in rows)
         //        {
         //            History.Add(r);
         //        }
@@ -90,7 +104,7 @@ namespace WPFIncome
         //    {
         //        return fileProvider.FileExists(ImportFilePath) && !IsBusy;
         //    }
-            
+
         //);
 
         //private DelegateCommand exportToExcel;
