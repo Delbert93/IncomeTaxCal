@@ -30,14 +30,14 @@ namespace WPFIncome
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //var openFileDialog = new OpenFileDialog();
-            //openFileDialog.Filter = "Excel Files (*.xlsx)|*.xlsx";
-            //openFileDialog.Title = "Locate your Excel Input File";
-            //openFileDialog.Multiselect = false;
-            //if (openFileDialog.ShowDialog() ?? false)
-            //{
-            //    vm.ImportFilePath = openFileDialog.FileName;
-            //}
+            var openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Excel Files (*.xlsx)|*.xlsx";
+            openFileDialog.Title = "Locate your Excel Input File";
+            openFileDialog.Multiselect = false;
+            if (openFileDialog.ShowDialog() ?? false)
+            {
+                vm.ImportFilePath = openFileDialog.FileName;
+            }
         }
     }
 }

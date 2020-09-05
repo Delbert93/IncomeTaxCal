@@ -27,14 +27,15 @@
                 <TextBlock Text="File"
                            VerticalAlignment="Center"/>
                 <TextBox Grid.Column="1"
-                         Text=""
+                         Text="{Binding ImportFilePath}"
                          Margin="5"/>
                 <Button Content="..."
-                        Grid.Column="2"/>
+                        Grid.Column="2"
+                        Click="Button_Click"/>
                 <Button Content="Import"
                         Command="{Binding ImportFromExcel}"
                         Grid.Column="3" 
-                        Click="Button_Click"/>
+                        />
 
                 <TextBlock Text="Income Amount"
                            Grid.Row="1"
@@ -74,9 +75,10 @@
                          Grid.Column="1"
                          Text="{Binding IncomeCalculator.NewIncome, StringFormat=c}"/>
 
-                <Button Content="Import"
+                <Button Content="Export"
                         Grid.Row="6"
                         Grid.Column="1"
+                        Command="{Binding ExportToExcel}"
                         HorizontalAlignment="Center"/>
             </Grid>
         </TabItem>
