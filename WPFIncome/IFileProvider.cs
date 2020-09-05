@@ -99,7 +99,7 @@ namespace WPFIncome
                     sheet.Cells[row, 4].Value = calc.NewIncome;
                 }
 
-                sheet.Tables.Add(sheet.Cells[1, 1, row, 5], "ExcelTable");
+                sheet.Tables.Add(sheet.Cells[1, 1, row, 4], "ExcelTable");
 
                 var currencyFormat = "_ $* #,##0.00_-;$* #,##0.00_-;_$* \"-\"??_-;_-@_-";
                 sheet.Column(1).Style.Numberformat.Format = currencyFormat;
@@ -107,9 +107,9 @@ namespace WPFIncome
                 sheet.Column(4).Style.Numberformat.Format = currencyFormat;
 
                 sheet.Column(1).Width = 18;
-                sheet.Column(2).Width = 10;
+                sheet.Column(2).Width = 8;
                 sheet.Column(3).Width = 18;
-                sheet.Column(4).Width = 18;
+                sheet.Column(4).Width = 25;
 
                 package.Save();
             }

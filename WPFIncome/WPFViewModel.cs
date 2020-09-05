@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 
 namespace WPFIncome
 {
@@ -17,6 +18,8 @@ namespace WPFIncome
         public WPFViewModel(RealFileProvider realFileProvider)
         {
             History = new ObservableCollection<IncomeTaxCalFinder>();
+
+            INotifyPropertyChanged notify;
 
             this.fileProvider = new RealFileProvider();
 
@@ -39,6 +42,7 @@ namespace WPFIncome
                 }
                 IncomeCalculator.taxableIncome();
                 History.Add(IncomeCalculator);
+                ExportToExcel.RaiseCanExecuteChanged();
 
                 IncomeCalculator = IncomeCalculator.Clone() as IncomeTaxCalFinder;
                 RaisePropertyChanged(nameof(IncomeCalculator));
@@ -95,6 +99,7 @@ namespace WPFIncome
                 {
                     History.Add(r);
                 }
+                ExportToExcel.RaiseCanExecuteChanged();
                 IncomeCalculator = rows.Last().Clone() as IncomeTaxCalFinder;
                 IsBusy = false;
             },
