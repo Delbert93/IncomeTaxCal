@@ -7,16 +7,14 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace WPFIncome
 {
     public class WPFViewModel : BindableBase
     {
-        public IncomeTaxCalFinder IncomeCalculator { get; private set; }
-        public DelegateCommand CalculateCommand { get; private set; }
-        public ObservableCollection<IncomeTaxCalFinder> History { get; set; }
-        public WPFViewModel()
+        public WPFViewModel(RealFileProvider reaslFileProvider)
         {
             History = new ObservableCollection<IncomeTaxCalFinder>();
 
@@ -34,6 +32,10 @@ namespace WPFIncome
                 RaisePropertyChanged(nameof(IncomeCalculator));
             });
         }
+        public IncomeTaxCalFinder IncomeCalculator { get; private set; }
+        public DelegateCommand CalculateCommand { get; private set; }
+
+        public ObservableCollection<IncomeTaxCalFinder> History { get; set; }
 
         private Dictionary<string, decimal> states;
         public Dictionary<string, decimal> States
@@ -55,5 +57,67 @@ namespace WPFIncome
                 _selectedState = value;
             }
         }
+
+        //private bool isBusy;
+        //public bool IsBusy
+        //{
+        //    get => isBusy;
+        //    set
+        //    {
+        //        SetProperty(ref isBusy, value);
+        //        ImportFromExcel.RaiseCanExecuteChanged();
+        //    }
+        //}
+
+        //private DelegateCommand importFromExcel;
+        //public DelegateCommand ImportFromExcel => importFromExcel ??= new DelegateCommand(
+        //    async () =>
+        //    {
+        //        IsBusy = true;
+        //        var rows = await fileProvider.ReadParametersFromExcelAsync(ImportFilePath);
+        //        await Task.Run(() =>
+        //        {
+        //            Parallel.ForEach(rows, r => r.taxableIncome());
+        //        });
+        //        foreach(var r in rows)
+        //        {
+        //            History.Add(r);
+        //        }
+        //        IncomeCalculator = rows.Last().Clone() as IncomeTaxCalFinder;
+        //        IsBusy = false;
+        //    },
+        //    () =>
+        //    {
+        //        return fileProvider.FileExists(ImportFilePath) && !IsBusy;
+        //    }
+            
+        //);
+
+        //private DelegateCommand exportToExcel;
+        //public DelegateCommand ExportToExcel => exportToExcel ??= new DelegateCommand(
+        //    () =>
+        //    {
+        //        fileProvider.ExportToExcel(History);
+        //    },
+        //    () =>
+        //    {
+        //        return History.Any();
+        //    }
+        //    );
+
+        //private string importFilePath;
+        //private readonly IFileProvider fileProvider;
+
+        //public string ImportFilePath
+        //{
+        //    get => importFilePath;
+        //    set
+        //    {
+        //        importFilePath = value;
+        //        RaisePropertyChanged(nameof(ImportFilePath));
+        //        ImportFromExcel.RaiseCanExecuteChanged();
+        //    }
+        //}
+
     }
 }
