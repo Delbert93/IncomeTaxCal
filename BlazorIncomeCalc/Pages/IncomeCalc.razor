@@ -1,0 +1,42 @@
+﻿@page "/IncomeCalculator" 
+<h3>Income Calculator</h3>
+
+Total Income <input type="number" @bind="incomeAmount"/>
+
+
+<div>
+    <label for="states">Choose a state:</label>
+
+    <select @bind="state">
+        @foreach (string st in listOfStates)
+        {
+            <option value="@st">@st</option>
+        }
+    </select>
+</div>
+
+
+<button @onclick="calculate">Calculate your new income.</button>
+
+<br />
+
+<span>Your new income is @newIncome.ToString("c")</span>
+
+@code {
+    IncomeTaxCal.IncomeTaxCalFinder incomeCalculator = new IncomeTaxCal.IncomeTaxCalFinder();
+    private decimal incomeAmount;
+    private decimal newIncome;
+    private string state = "AL";
+    private IEnumerable<string> listOfStates => incomeCalculator.taxRates.Keys;
+
+    private void calculate()
+    {
+        var incomeCalculator = new IncomeTaxCal.IncomeTaxCalFinder();
+        incomeCalculator.Income = incomeAmount;
+        incomeCalculator.State = state;
+        incomeCalculator.taxableIncome();
+        newIncome = incomeCalculator.NewIncome;
+
+    }
+
+}
